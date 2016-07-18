@@ -1,4 +1,5 @@
 ActiveAdmin.register Blog do
+  permit_params :title, :content, :pic_filename, :pic_content_type, :pic_file_size, :pic_updated_at
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
