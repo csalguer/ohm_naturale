@@ -1,34 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Blog -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Blog %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @blog.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:content) %></dt>
+      <dd><pre class="prettyprint"><%= @blog.content %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:pic_filename) %></dt>
+      <dd><pre class="prettyprint"><%= @blog.pic_filename %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:pic_content_type) %></dt>
+      <dd><pre class="prettyprint"><%= @blog.pic_content_type %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:pic_file_size) %></dt>
+      <dd><pre class="prettyprint"><%= @blog.pic_file_size %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:pic_updated_at) %></dt>
+      <dd><pre class="prettyprint"><%= @blog.pic_updated_at %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @blog.content %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              blogs_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_blog_path(@blog), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              blog_path(@blog),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Pic filename:</strong>
-  <%= @blog.pic_filename %>
-</p>
-
-<p>
-  <strong>Pic content type:</strong>
-  <%= @blog.pic_content_type %>
-</p>
-
-<p>
-  <strong>Pic file size:</strong>
-  <%= @blog.pic_file_size %>
-</p>
-
-<p>
-  <strong>Pic updated at:</strong>
-  <%= @blog.pic_updated_at %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
